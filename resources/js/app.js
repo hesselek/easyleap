@@ -7,7 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
-
+import '../sass/app.scss';
+import './filters/globalfilter.js';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,7 +21,6 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('other', require('./components/other.vue').default);
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 Vue.component('supplies-component', require('./components/SuppliesComponent.vue').default);
 /**
