@@ -1,13 +1,7 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/supplies" v-if="isLogged">Supplies</router-link>
-            <router-link to="/login" v-else>Login</router-link>
-        </div>
-        <button type="button" @click="logout()" v-if="isLogged">
-            Logout
-        </button>
+        <header-component></header-component>
+       
 
         <router-view/>
 
@@ -16,41 +10,20 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
+import HeaderComponent from './components/HeaderComponent.vue'
 export default {
     computed: {
         ...mapGetters([
             'isLogged'
         ])
     },
+    comments : {
+        HeaderComponent
+    },
 
-    methods: {
-        logout () {
-            this.$store.dispatch('logout')
-        }
-    }
 }
 </script>
 
 <style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
 
-#nav {
-    padding: 30px;
-}
-
-#nav a {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-    color: #42b983;
-}
 </style>

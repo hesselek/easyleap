@@ -7,8 +7,8 @@
     <title>Laravel</title>
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 </head>
-<body>
-<div id="app" class="container">
+<body class="container">
+<div id="app" >
    <!-- <header-component></header-component>
     <supplies-component></supplies-component><!--Añadimos nuestro componente vuejs-->
 
