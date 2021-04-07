@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Supplies;
-use App\Http\Resources\SuppliesResource;
+
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,11 @@ use App\Http\Resources\SuppliesResource;
 Route::get('/', function () {
     return view('spa');
 });
-Route::get('/template', function () {
-    return App\Http\Resources\SuppliesResource::collection(Supplies::all());
-});
+
+/*
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get( '/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'] )->name( 'login' );
+*/

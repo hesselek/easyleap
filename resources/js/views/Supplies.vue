@@ -23,20 +23,20 @@
         </main>
     </section>
 </template>
-<style lang="scss">
-    .wrapper{
-        background: #adb5bd;
-    }
-</style>
+
 <script>
+// @ is an alias to /src
+//import HelloWorld from '@/components/HelloWorld.vue'
+
 export default {
+    name: 'Supplies',
     data() {
         return {
             supplies: [],
         }
     },
     created() {
-        axios.get('/api/supplieslist').then(res => {
+        axios.get('/supplieslist').then(res => {
             this.supplies = res.data.data;
             console.log(this.supplies);
         })

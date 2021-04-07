@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="app" class="container">
-    <header-component></header-component>
+   <!-- <header-component></header-component>
     <supplies-component></supplies-component><!--Añadimos nuestro componente vuejs-->
 
 </div>

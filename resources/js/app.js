@@ -7,8 +7,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
-import '../sass/app.scss';
-import './filters/globalfilter.js';
+import router from "./router";
+import store from "./store";
+import App from './App.vue';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -22,7 +23,8 @@ import './filters/globalfilter.js';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
-Vue.component('supplies-component', require('./components/SuppliesComponent.vue').default);
+Vue.component('supplies-component', require('./components/SuppliesComponent').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -30,5 +32,24 @@ Vue.component('supplies-component', require('./components/SuppliesComponent.vue'
  */
 
 const app = new Vue({
-    el: '#app',
-});
+    router,
+    store,
+    created () {
+        const userInfo = localStorage.getItem('user')
+        if (userInfo) {
+            const userData = JSON.parse(userInfo)
+            this.$store.commit('setUserData', userData)
+        }
+        axios.interceptors.response.use(
+            response => response,
+            error => {
+                if (error.response.status === 401) {
+                    this.$store.dispatch('logout')
+                }
+                return Promise.reject(error)
+            }
+        )
+    },
+    render: h => h(App)
+  //  el: '#app',
+}).$mount('#app');

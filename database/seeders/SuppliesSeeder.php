@@ -15,6 +15,7 @@ class SuppliesSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('supplies')->insert([
                                 'name'=>'Chair',
                                 'created_at'=>Carbon::now('Europe/Madrid'),
